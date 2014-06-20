@@ -1,0 +1,1 @@
+closure-library\closure\bin\build\closurebuilder.py --root=closure-library --root=Editor --namespace="Editor" --output_mode=compiled --compiler_jar=ClosureCompiler\compiler.jar --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" --compiler_flags="--externs" --compiler_flags="externs.js" --output_file=Editor.min.js
