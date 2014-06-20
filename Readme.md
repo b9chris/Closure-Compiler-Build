@@ -15,7 +15,7 @@ You'll need to have [Java installed](http://www.java.com/inc/BrowserRedirect1.js
 You should also add both to your path.
 
 #How It Works
-build.bat uses the following command, broken-down across multiple lines here to explain what it's doing:
+build.bat uses the following command:
 
     closure-library\closure\bin\build\closurebuilder.py --root=closure-library
     --root=Editor --namespace="Editor" --output_mode=compiled
@@ -25,7 +25,7 @@ build.bat uses the following command, broken-down across multiple lines here to 
 ##Detailed Breakdown of build.bat
 	closure-library\closure\bin\build\closurebuilder.py
 
-Although most of the docs talk about using the compiler.jar directly, if you're going to use a class from the Closure Library you'll be asked to build a complicated dependencies file first, and closurebuilder.py automates that for you. It calls compiler.jar on your behalf.
+Although most of the docs talk about using compiler.jar directly, if you're going to use a class from the Closure Library you'll be asked to build a complicated dependencies file first, and closurebuilder.py automates that for you. It calls compiler.jar on your behalf.
 
 	--root=closure-library --root=Editor
 
@@ -59,3 +59,22 @@ The name of the file to minify to.
 
 #Breakdown of Editor\Editor.js
 
+	goog.provide('Editor');
+	
+The namespace and name of the class we're emitting. You can do this differently and keep the classnames in Closure, but it's a bit better for minification to rename the classes you'll be directly calling to short classnames without a namespace.
+	
+	goog.require('goog.editor.SeamlessField');
+	
+Use one or more of these to name the classes you're trying to get access to in the Closure Library. 
+	
+	window['Editor'] = goog.editor.SeamlessField;
+	
+This again tells the compiler that "Editor" is the name of the class to emit, and what class it's an alias for. The name needs to match what you used in `goog.provide()`.
+	
+	var p = goog.editor.SeamlessField.prototype;
+	
+An alias for the prototype to make the following lines simpler.
+	
+	p['makeEditable'] = p.makeEditable;
+	
+For each class you're emitting, all its methods will be minified or more likely removed as dead code, unless you explicitly export them as is done on this line.
