@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Test SeamlessField / Editor</title>
+<style>
+body {
+	font: 10pt Verdana;
+}
+
+#editor {
+	min-height: 3em;
+	border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+<div id=editor></div>
+
+<script src="../closure-library/closure/goog/base.js"></script>
+<script>
+goog.require('goog.editor.SeamlessField');
+</script>
+<script>
+(function () {
+	var editor = new goog.editor.SeamlessField('editor');
+	editor.makeEditable();
+})();
+</script>
+</body>
+</html>
