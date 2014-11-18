@@ -1,2 +1,3 @@
 closure-library\closure\bin\build\closurebuilder.py --root=closure-library --root=Editor --namespace="Editor" --output_mode=compiled --compiler_jar=ClosureCompiler\compiler.jar --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" --compiler_flags="--externs" --compiler_flags="externs.js" --output_file=Editor.min.js
-copy /y Editor.min.js "C:\Users\Chris\Dropbox\Code\2013\Stemage\Stemage\ui\Editor.min.js"
+
+rem copy /y Editor.min.js "C:\Users\Chris\Dropbox\Code\2013\Stemage\Stemage\ui\Editor.min.js"

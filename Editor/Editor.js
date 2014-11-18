@@ -14,6 +14,8 @@ goog.require('goog.editor.plugins.LinkBubble');
 goog.require('goog.editor.plugins.LinkDialogPlugin');
 goog.require('goog.ui.editor.DefaultToolbar');
 goog.require('goog.ui.editor.ToolbarController');
+goog.require('goog.editor.plugins.ImageBubble');
+goog.require('goog.editor.plugins.ImageDialogPlugin');
 
 window['Editor'] = goog.editor.SeamlessField;
 
@@ -38,6 +40,10 @@ window['makeEditor'] = function (editorId, toolbarId) {
 	editor.registerPlugin(new goog.editor.plugins.HeaderFormatter());
 	editor.registerPlugin(new goog.editor.plugins.LinkDialogPlugin());
 	editor.registerPlugin(new goog.editor.plugins.LinkBubble());
+	editor.registerPlugin(new goog.editor.plugins.ImageDialogPlugin({
+		actionUrl: '/manage/manageblog/uploadimage'
+	}));
+	editor.registerPlugin(new goog.editor.plugins.ImageBubble());
 	
 	// Setup Toolbar
 	var buttons = [

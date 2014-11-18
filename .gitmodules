@@ -1,3 +1,6 @@
 [submodule "closure-library"]
 	path = closure-library
 	url = git@github.com:google/closure-library.git
+[submodule "imageplugin"]
+	path = imageplugin
+	url = git@github.com:yinhm/google-closure-editor-image.git
